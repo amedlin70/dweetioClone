@@ -1,0 +1,23 @@
+dweetioClone is a simple node.js version of www.dweet.io
+
+Requirments.
+	node.js version 0.12.0
+	mongodb version 3.0.0
+
+
+Instalation.
+	To run this program, make sure that node.js and mongodb are installed.  To install the dependencies run "npm install" in the base folder of the application.  Start mongodb with the default port, then run the node server using "node dweetServer.js".  This starts the server which is listening to port 3000.
+
+Use.
+	Create a new dweet - send a GET request to
+		localhost:3000/dweet/for/{thing}?key1=value1&key2=value2
+	or send a POST request to
+		localhost:3000/dweet/for/{thing} with the body being the content
+
+	Get latest dweet - send a GET request to the following
+		localhost:3000/get/latest/dweet/for/{thing}
+
+	Get all dweets for a thing - send a GET request to the following
+		localhost:3000/get/dweets/for/{thing}
+
+	Optional - use the web interface at localhost:3000

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Load css, js is loaded at end of page -->
+		<link rel="stylesheet" href="data/css/bootstrap.min.css">
+		<link rel="stylesheet" href="data/css/style.css">
+	</head>
+
+	<body ng-app="app" ng-controller="MainCtrl as main">
+
+		<!--  Main content -->
+		<div class="container bg-white" style="height: 100%">
+			<ui-view></ui-view>
+		</div>	
+
+
+		<!--  Footer -->
+		<footer ng-include src="'views/footer.html'"></footer>
+
+		<!--  Load Javascript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="data/js/bootstrap.min.js"></script>
+
+
+		<!-- AngularJS -->
+		<script src="data/js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+		<script src="data/js/ui.router.js"></script>
+		<script src="data/js/app.js"></script>
+		<script src="controllers/mainModule.js"></script>
+
+	</body>
+</html>
+
+

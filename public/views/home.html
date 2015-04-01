@@ -1,0 +1,197 @@
+<div ng-init="">
+	&nbsp;
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading" ng-click="mainHelper.postDweet=!mainHelper.postDweet">
+					<span class="pull-right text-success">Create a dweet for a thing.</span>
+					<h3 class="panel-title"><span class="label label-success">Post</span> /dweet/for/{thing}</h3>
+				</div>
+				<div class="panel-body" ng-hide="mainHelper.postDweet">
+					<form name="frmPostDweet" novalidate>
+						<h4 class="text-success">Parameters</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="col-xs-1">Parameter</th>
+									<th class="col-xs-5">Value</th>
+									<th class="col-xs-4">Description</th>
+									<th class="col-xs-1">Parameter Type</th>
+									<th class="col-xs-1">Data Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>thing</strong></td>
+									<td>
+										<input class="col-xs-12" name="thing" placeholder="(required)" type="text" ng-model="dweetPost.thing" required value />
+									</td>
+									<td>
+										<strong>A unique name of a thing.</strong>
+									</td>
+									<td>path</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>key</td>
+									<td>
+										<input class="col-xs-12" name="key" placeholder="" type="text" ng-model="dweetPost.key" value>
+									</td>
+									<td>
+										A valid key for a locked thing. If the thing is not locked, this can be ignored.
+									</td>
+									<td>query</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td><strong>content</strong></td>
+									<td>
+										<textarea class="col-xs-12" name="content" placeholder="(required)" type="text" ng-model="dweetPost.content" required value></textarea>
+									</td>
+									<td>
+										<strong>The actual content of the string. Can be any valid JSON string.</strong>
+									</td>
+									<td>path</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class = "btn btn-default" ng-disabled="frmPostDweet.$invalid" ng-click="postDweet(dweetPost)">Try it out!</div>
+					</form>
+					<div ng-hide="mainHelper.postDweetRes">
+						<h4 class="text-success">Request URL</h4>
+						<div class="well">{{dweetPost.url}}</div>
+						<h4 class="text-success">Response Body</h4>
+						<div class="well">{{dweetPost.body}}</div>
+						<h4 class="text-success">Response Code</h4>
+						<div class="well">{{dweetPost.code}}</div>
+						<h4 class="text-success">Response Headers</h4>
+						<div class="well">{{dweetPost.headers}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading" ng-click="mainHelper.getDweet=!mainHelper.getDweet">
+					<span class="pull-right text-primary">Read the latest dweet for a thing.</span>
+					<h3 class="panel-title"><span class="label label-primary">Get</span> /get/latest/dweet/for/{thing}</h3>
+				</div>
+				<div class="panel-body" ng-hide="mainHelper.getDweet">
+					<form name="frmGetDweet" novalidate>
+						<h4 class="text-primary">Parameters</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="col-xs-1">Parameter</th>
+									<th class="col-xs-5">Value</th>
+									<th class="col-xs-4">Description</th>
+									<th class="col-xs-1">Parameter Type</th>
+									<th class="col-xs-1">Data Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>thing</strong></td>
+									<td>
+										<input class="col-xs-12" name="thing" placeholder="(required)" type="text" ng-model="dweetGet.thing" required value>
+									</td>
+									<td>
+										<strong>A unique name of a thing.</strong>
+									</td>
+									<td>path</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>key</td>
+									<td>
+										<input class="col-xs-12" name="key" placeholder="" type="text" ng-model="dweetGet.key" value>
+									</td>
+									<td>
+										A valid key for a locked thing. If the thing is not locked, this can be ignored.
+									</td>
+									<td>query</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class = "btn btn-default" ng-disabled="frmGetDweet.$invalid" ng-click="getDweet(dweetGet)">Try it out!</div>
+					</form>
+					<div ng-hide="mainHelper.getDweetRes">
+						<h4 class="text-primary">Request URL</h4>
+						<div class="well">{{dweetGet.url}}</div>
+						<h4 class="text-primary">Response Body</h4>
+						<div class="well">{{dweetGet.body}}</div>
+						<h4 class="text-primary">Response Code</h4>
+						<div class="well">{{dweetGet.code}}</div>
+						<h4 class="text-primary">Response Headers</h4>
+						<div class="well">{{dweetGet.headers}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading" ng-click="mainHelper.getDweets=!mainHelper.getDweets">
+					<span class="pull-right text-primary">Read all of the saved dweets (up to last 500) for a thing.</span>
+					<h3 class="panel-title"><span class="label label-primary">Get</span> /get/dweets/for/{thing}</h3>
+				</div>
+				<div class="panel-body" ng-hide="mainHelper.getDweets">
+					<form name="frmGetDweets" novalidate>
+						<h4 class="text-primary">Parameters</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="col-xs-1">Parameter</th>
+									<th class="col-xs-5">Value</th>
+									<th class="col-xs-4">Description</th>
+									<th class="col-xs-1">Parameter Type</th>
+									<th class="col-xs-1">Data Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>thing</strong></td>
+									<td>
+										<input class="col-xs-12" name="thing" placeholder="(required)" type="text" ng-model="dweetsGet.thing" required value>
+									</td>
+									<td>
+										<strong>A unique name of a thing.</strong>
+									</td>
+									<td>path</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>key</td>
+									<td>
+										<input class="col-xs-12" name="key" placeholder="" type="text" ng-model="dweetsGet.key" value>
+									</td>
+									<td>
+										A valid key for a locked thing. If the thing is not locked, this can be ignored.
+									</td>
+									<td>query</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class = "btn btn-default" ng-disabled="frmGetDweets.$invalid" ng-click="getDweets(dweetsGet)">Try it out!</div>
+					</form>
+					<div ng-hide="mainHelper.getDweetsRes">
+						<h4 class="text-primary">Request URL</h4>
+						<div class="well">{{dweetsGet.url}}</div>
+						<h4 class="text-primary">Response Body</h4>
+						<div class="well">{{dweetsGet.body | json}}</div>
+						<h4 class="text-primary">Response Code</h4>
+						<div class="well">{{dweetsGet.code}}</div>
+						<h4 class="text-primary">Response Headers</h4>
+						<div class="well">{{dweetsGet.headers | json}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
